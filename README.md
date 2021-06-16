@@ -7,9 +7,7 @@ This module builds on [rake-nltk](https://github.com/csurfer/rake-nltk).
 ## Setup
 
 ```sh
-$ git clone https://github.com/kanjirz50/rake-ja.git
-$ cd rake-ja
-$ python setup.py install
+pip install rake-ja
 ```
 
 ## Quick start

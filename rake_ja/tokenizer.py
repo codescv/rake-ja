@@ -1,5 +1,6 @@
 import MeCab
 from collections import namedtuple
+import unidic_lite
 
 
 Morpheme = namedtuple("Morpheme", "surface pos pos_s1 pos_s2 pos_s3 conj form")
@@ -7,8 +8,9 @@ Morpheme = namedtuple("Morpheme", "surface pos pos_s1 pos_s2 pos_s3 conj form")
 
 class Tokenizer:
     def __init__(self, **kwargs):
-        self.__mecab = MeCab.Tagger(**kwargs)
-        self.__mecab.parse("Initialize parse.")
+      kwargs = kwargs or dict(rawargs=f'-r /dev/null -d {unidic_lite.DICDIR}')
+      self.__mecab = MeCab.Tagger(**kwargs)
+      self.__mecab.parse("Initialize parse.")
 
     def tokenize(self, text):
         return [m for m in self.__iter_morpheme(text)]
